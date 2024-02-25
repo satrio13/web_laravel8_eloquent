@@ -75,7 +75,7 @@ class TahunController extends Controller
 
         $cek_un = RekapUNModel::select('id_tahun')->where('id_tahun', $id)->first();
         $cek_us = RekapUSModel::select('id_tahun')->where('id_tahun', $id)->first();
-        $cek_s =  SiswaModel::select('id_tahun')->where('id_tahun', $id)->first();
+        $cek_s = SiswaModel::select('id_tahun')->where('id_tahun', $id)->first();
         $cek_p_siswa = PrestasiSiswaModel::select('id_tahun')->where('id_tahun', $id)->first();
         $cek_p_guru = PrestasiGuruModel::select('id_tahun')->where('id_tahun', $id)->first();
         $cek_p_sekolah = PrestasiSekolahModel::select('id_tahun')->where('id_tahun', $id)->first();
@@ -85,7 +85,7 @@ class TahunController extends Controller
             return redirect()->route('backend/tahun')->with(['error' => 'Data gagal dihapus, karena sudah berelasi!']);
         }else
         {
-            $q = $data->where('id_tahun', $id)->delete();
+            $q = $data->delete();
             if($q)
             {
                 return redirect()->route('backend/tahun')->with(['success' => 'Data Berhasil Dihapus!']);
