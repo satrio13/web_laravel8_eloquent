@@ -34,7 +34,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">USERNAME <span class="text-danger">*</span></label>
                                     <div class="col-sm-5">
-                                        <input type="text" name="username" minlength="5" maxlength="30" readonly class="form-control sepasi required" value="<?= $username; ?>">
+                                        <input type="text" name="username" minlength="5" maxlength="30" readonly class="form-control sepasi required" value="{{ $username }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
