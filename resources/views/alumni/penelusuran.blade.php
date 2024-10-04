@@ -23,7 +23,7 @@
                         {!! pesan_gagal(session('error')) !!}
                     @endif
 
-                    Silahkan mengisi data alumni, dengan adanya penelusuran alumni ini para alumni bisa mencari teman-teman sekolah dulu. Jika anda sudah mengisi data sebagai alumni <?= strtoupper(title()); ?>, maka data anda akan kami simpan di database kami, bagian publishing website akan mempublish data anda.
+                    Silahkan mengisi data alumni, dengan adanya penelusuran alumni ini para alumni bisa mencari teman-teman sekolah dulu. Jika anda sudah mengisi data sebagai alumni {{ strtoupper(title()) }}, maka data anda akan kami simpan di database kami, bagian publishing website akan mempublish data anda.
                 </div>
                 <div class="col-md-6 bg-light p-3">
                 <form method="POST" action="{{ route('alumni/simpan-penelusuran-alumni') }}" enctype="multipart/form-data" id="form">
