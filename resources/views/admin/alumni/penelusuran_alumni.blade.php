@@ -140,7 +140,7 @@
                         <div class="col-md-2 text-bold">TAHUN LULUS</div>
                         <div class="col-md-10" id="th_lulus"></div>
                     </div>
-                    <?php 
+                    @php 
                     if(jenjang() == 1 OR jenjang() == 3)
                     { 
                         echo'<div class="row mt-2">
@@ -160,7 +160,7 @@
                                 <div class="col-md-10" id="pt"></div>
                             </div>';
                     } 
-                    ?>
+                    @endphp
                     <div class="row mt-2">
                         <div class="col-md-2 text-bold">INSTANSI</div>
                         <div class="col-md-10" id="instansi"></div>
