@@ -43,7 +43,7 @@
                     <form method="POST" action="{{ route('auth/proses-login') }}">
                         @csrf
                         <div class="input-group mb-3">
-                            <input type="text" name="username" maxlength="30" minlength="5" class="form-control sepasi" placeholder="Username" autocomplete="off" autofocus value="<?= old('username'); ?>">
+                            <input type="text" name="username" maxlength="30" minlength="5" class="form-control sepasi" placeholder="Username" autocomplete="off" autofocus value="{{ old('username') }}">
                             <div class="input-group-append">
                                 <div class="input-group-text"><span class="fas fa-user"></span></div>
                             </div>
