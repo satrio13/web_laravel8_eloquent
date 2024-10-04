@@ -481,7 +481,7 @@
                 </div>
                 <div class="row m-1 border">
                     <div class="col-md-12 text-center">
-                        <a href="{{ route('pengaduan') }}" title="Klik Disini untuk menuju halaman pengaduan <?= title(); ?>">
+                        <a href="{{ route('pengaduan') }}" title="Klik Disini untuk menuju halaman pengaduan {{ title() }}">
                             <img src="/file/pengaduan.png" class="img img-fluid mt-2 mb-2" style="height: 70px; object-fit: contain;">
                         </a>
                     </div>
