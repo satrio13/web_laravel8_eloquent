@@ -208,19 +208,19 @@
                             @endphp
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 Pengunjung Online
-                                <span class="badge badge-primary badge-pill"><?= $pengunjungonlineCount; ?></span>
+                                <span class="badge badge-primary badge-pill">{{ $pengunjungonlineCount }}</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 Pengunjung Hari Ini
-                                <span class="badge badge-primary badge-pill"><?= $pengunjungCount; ?></span>
+                                <span class="badge badge-primary badge-pill">{{ $pengunjungCount }}</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 Hits Hari Ini
-                                <span class="badge badge-primary badge-pill"><?= $hitsTotal; ?></span>
+                                <span class="badge badge-primary badge-pill">{{ $hitsTotal }}</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <i class="fa fa-users"></i> Total Pengunjung
-                                <span class="badge badge-primary badge-pill"><?= $totalpengunjungTotal; ?></span>
+                                <span class="badge badge-primary badge-pill">{{ $totalpengunjungTotal }}</span>
                             </li>
                         </ul>
                     </div>
