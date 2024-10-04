@@ -12,7 +12,7 @@
         </div>
         <div class="row">
             <div class="col-md-9 text-break">
-                <h3><b><?= $title; ?></b></h3>
+                <h3><b>{{ $title }}</b></h3>
                 <label class="badge badge-primary"><i class="fa fa-clock-o"></i> {{ $data->hari.', '.tgl_indo($data->updated_at).', '.date('H:i', strtotime($data->updated_at)).' WIB' }}</label>
                 <label class="badge badge-info"><i class="fa fa-user"></i> {{ nama_user($data->id_user) }}</label>
                 <label class="badge badge-danger"><i class="fa fa-eye"></i> {{ $data->dibaca }} x dibaca</label>
