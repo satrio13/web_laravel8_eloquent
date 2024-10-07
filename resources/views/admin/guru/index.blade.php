@@ -217,6 +217,36 @@
             handle_confirm_delete();
         });
 
+        function cek_session(callback)
+        {
+            $.ajax({
+                url: base_url + "/auth/cek-session", 
+                type: "GET",
+                dataType: "JSON",
+                success: function(data)
+                {   
+                    if(!data.session_active)
+                    {
+                        swal({
+                            position: 'top-end',
+                            icon: 'error',
+                            title: 'Sesi anda telah habis, silahkan login kembali',
+                            timer: 5000
+                        }).then(() => {
+                            window.location.reload(); 
+                        });
+                    }else
+                    {
+                        callback();
+                    }
+                },
+                error: function()
+                {
+                   alert_gagal('Error checking session. Please check your internet connection!');
+                }
+            });
+        }
+
         function handle_datatable()
         {
             $("#datatable").DataTable();
@@ -231,133 +261,136 @@
         
         function detail(id)
         {
-            $('#modal_form').modal('show'); 
-            $("#img, #nama, #nip, #duk, #niplama, #nuptk, #nokarpeg, #tmp_lahir, #tgl_lahir, #statuspeg, #golruang, #tmt_cpns, #tmt_pns, #jk,#agama, #alamat, #tingkat_pt, #prodi, #th_lulus, #status, #statusguru, #email").html('');
+            cek_session(function()
+            {
+                $('#modal_form').modal('show'); 
+                $("#img, #nama, #nip, #duk, #niplama, #nuptk, #nokarpeg, #tmp_lahir, #tgl_lahir, #statuspeg, #golruang, #tmt_cpns, #tmt_pns, #jk,#agama, #alamat, #tingkat_pt, #prodi, #th_lulus, #status, #statusguru, #email").html('');
 
-            $.ajax({
-                url : base_url + "/backend/lihat-guru/"+id,
-                type: "GET",
-                dataType: "JSON",
-                beforeSend: function()
-                {
-                    $("#load").html('<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>');
-                },
-                success: function(data)
-                {
-                    var nip = (data.nip !== null) ? data.nip : '';
-                    var duk = (data.duk !== null) ? data.duk : '';
-                    var niplama = (data.niplama !== null) ? data.niplama : '';
-                    var nuptk = (data.nuptk !== null) ? data.nuptk : '';
-                    var nokarpeg = (data.nokarpeg !== null) ? data.nokarpeg : '';
-                    var golruang = (data.golruang !== null) ? data.golruang : '';
-                    var alamat = (data.alamat !== null) ? data.alamat : '';
-                    var tingkat_pt = (data.tingkat_pt !== null) ? data.tingkat_pt : '';
-                    var prodi = (data.prodi !== null) ? data.prodi : '';
-                    var th_lulus = (data.th_lulus !== null) ? data.th_lulus : '';
-                    var email = (data.email !== null) ? data.email : '';
-
-                    var fileUrl = base_url +'/img/guru/'+ data.gambar;
-                    check_file_exists(fileUrl, function(exists)
+                $.ajax({
+                    url : base_url + "/backend/lihat-guru/"+id,
+                    type: "GET",
+                    dataType: "JSON",
+                    beforeSend: function()
                     {
-                        if(data.gambar != '')
+                        $("#load").html('<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>');
+                    },
+                    success: function(data)
+                    {
+                        var nip = (data.nip !== null) ? data.nip : '';
+                        var duk = (data.duk !== null) ? data.duk : '';
+                        var niplama = (data.niplama !== null) ? data.niplama : '';
+                        var nuptk = (data.nuptk !== null) ? data.nuptk : '';
+                        var nokarpeg = (data.nokarpeg !== null) ? data.nokarpeg : '';
+                        var golruang = (data.golruang !== null) ? data.golruang : '';
+                        var alamat = (data.alamat !== null) ? data.alamat : '';
+                        var tingkat_pt = (data.tingkat_pt !== null) ? data.tingkat_pt : '';
+                        var prodi = (data.prodi !== null) ? data.prodi : '';
+                        var th_lulus = (data.th_lulus !== null) ? data.th_lulus : '';
+                        var email = (data.email !== null) ? data.email : '';
+
+                        var fileUrl = base_url +'/img/guru/'+ data.gambar;
+                        check_file_exists(fileUrl, function(exists)
                         {
-                            $("#img").html('<img src="'+ base_url +'/img/guru/'+ data.gambar +'" class="img img-fluid img-thumbnail" width="120px">');
+                            if(data.gambar != '')
+                            {
+                                $("#img").html('<img src="'+ base_url +'/img/guru/'+ data.gambar +'" class="img img-fluid img-thumbnail" width="120px">');
+                            }else
+                            {
+                                $("#img").html('');
+                            }
+                        });
+
+                        var tgl_lahir;
+                        if(data.tgl_lahir != '0000-00-00' && data.tgl_lahir !== null)
+                        {
+                            tgl_lahir = tgl_indo(data.tgl_lahir);
                         }else
                         {
-                            $("#img").html('');
+                            tgl_lahir = '';
                         }
-                    });
 
-                    var tgl_lahir;
-                    if(data.tgl_lahir != '0000-00-00' && data.tgl_lahir !== null)
+                        var tmt_cpns;
+                        if(data.tmt_cpns != '0000-00-00' && data.tmt_cpns !== null)
+                        {
+                            tmt_cpns = tgl_indo(data.tmt_cpns);
+                        }else
+                        {
+                            tmt_cpns = '';
+                        }
+
+                        var tmt_pns;
+                        if(data.tmt_pns != '0000-00-00' && data.tmt_pns !== null)
+                        {
+                            tmt_pns = tgl_indo(data.tmt_pns);
+                        }else
+                        {
+                            tmt_pns = '';
+                        }
+
+                        var jk;
+                        if(data.jk == 1)
+                        {
+                            jk = 'Laki-Laki';
+                        }else if(data.jk == 2)
+                        {
+                            jk= 'Perempuan';
+                        }else
+                        {
+                            jk = '';
+                        }
+
+                        var agama;
+                        if(data.agama == '1')
+                        { 
+                            agama = 'Islam'; 
+                        }else if(data.agama == '2')
+                        { 
+                            agama = 'Kristen Katolik'; 
+                        }else if(data.agama == '3')
+                        { 
+                            agama = 'Kristen Protestan'; 
+                        }else if(data.agama == '4')
+                        { 
+                            agama = 'Hindu'; 
+                        }else if(data.agama == '5')
+                        { 
+                            agama = 'Budha'; 
+                        }else if(data.agama == '6')
+                        { 
+                            agama = 'Konghuchu'; 
+                        }else
+                        {
+                            agama = '';
+                        }
+
+                        $("#load").html('');
+                        $("#nama").html(': ' + data.nama);
+                        $("#nip").html(': ' + nip);
+                        $("#duk").html(': ' + duk);
+                        $("#niplama").html(': ' + niplama);
+                        $("#nuptk").html(': ' + nuptk);
+                        $("#nokarpeg").html(': ' + nokarpeg);
+                        $("#tmp_lahir").html(': ' + data.tmp_lahir);
+                        $("#tgl_lahir").html(': ' + tgl_lahir);
+                        $("#statuspeg").html(': ' + data.statuspeg);
+                        $("#golruang").html(': ' + golruang);
+                        $("#tmt_cpns").html(': ' + tmt_cpns);
+                        $("#tmt_pns").html(': ' + tmt_pns);
+                        $("#jk").html(': ' + jk);
+                        $("#agama").html(': ' + agama);
+                        $("#alamat").html(': ' + alamat);
+                        $("#tingkat_pt").html(': ' + tingkat_pt);
+                        $("#prodi").html(': ' + prodi);
+                        $("#th_lulus").html(': ' + th_lulus);
+                        $("#status").html(': ' + data.status);
+                        $("#statusguru").html(': ' + data.statusguru);
+                        $("#email").html(': ' + email);
+                    },
+                    error: function (request)
                     {
-                        tgl_lahir = tgl_indo(data.tgl_lahir);
-                    }else
-                    {
-                        tgl_lahir = '';
+                        alert('An error occurred during your request: '+  request.status + ' ' + request.statusText + 'Please Try Again!!');
                     }
-
-                    var tmt_cpns;
-                    if(data.tmt_cpns != '0000-00-00' && data.tmt_cpns !== null)
-                    {
-                        tmt_cpns = tgl_indo(data.tmt_cpns);
-                    }else
-                    {
-                        tmt_cpns = '';
-                    }
-
-                    var tmt_pns;
-                    if(data.tmt_pns != '0000-00-00' && data.tmt_pns !== null)
-                    {
-                        tmt_pns = tgl_indo(data.tmt_pns);
-                    }else
-                    {
-                        tmt_pns = '';
-                    }
-
-                    var jk;
-                    if(data.jk == 1)
-                    {
-                        jk = 'Laki-Laki';
-                    }else if(data.jk == 2)
-                    {
-                        jk= 'Perempuan';
-                    }else
-                    {
-                        jk = '';
-                    }
-
-                    var agama;
-                    if(data.agama == '1')
-                    { 
-                        agama = 'Islam'; 
-                    }else if(data.agama == '2')
-                    { 
-                        agama = 'Kristen Katolik'; 
-                    }else if(data.agama == '3')
-                    { 
-                        agama = 'Kristen Protestan'; 
-                    }else if(data.agama == '4')
-                    { 
-                        agama = 'Hindu'; 
-                    }else if(data.agama == '5')
-                    { 
-                        agama = 'Budha'; 
-                    }else if(data.agama == '6')
-                    { 
-                        agama = 'Konghuchu'; 
-                    }else
-                    {
-                        agama = '';
-                    }
-
-                    $("#load").html('');
-                    $("#nama").html(': ' + data.nama);
-                    $("#nip").html(': ' + nip);
-                    $("#duk").html(': ' + duk);
-                    $("#niplama").html(': ' + niplama);
-                    $("#nuptk").html(': ' + nuptk);
-                    $("#nokarpeg").html(': ' + nokarpeg);
-                    $("#tmp_lahir").html(': ' + data.tmp_lahir);
-                    $("#tgl_lahir").html(': ' + tgl_lahir);
-                    $("#statuspeg").html(': ' + data.statuspeg);
-                    $("#golruang").html(': ' + golruang);
-                    $("#tmt_cpns").html(': ' + tmt_cpns);
-                    $("#tmt_pns").html(': ' + tmt_pns);
-                    $("#jk").html(': ' + jk);
-                    $("#agama").html(': ' + agama);
-                    $("#alamat").html(': ' + alamat);
-                    $("#tingkat_pt").html(': ' + tingkat_pt);
-                    $("#prodi").html(': ' + prodi);
-                    $("#th_lulus").html(': ' + th_lulus);
-                    $("#status").html(': ' + data.status);
-                    $("#statusguru").html(': ' + data.statusguru);
-                    $("#email").html(': ' + email);
-                },
-                error: function (request)
-                {
-                    alert('An error occurred during your request: '+  request.status + ' ' + request.statusText + 'Please Try Again!!');
-                }
+                });
             });
         }
 
