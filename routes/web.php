@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 /* ADMIN */
 Route::get('auth/login', [App\Http\Controllers\Admin\AuthController::class, 'login'])->name('auth/login'); // start auth
 Route::post('auth/proses-login', [App\Http\Controllers\Admin\AuthController::class, 'proses_login'])->name('auth/proses-login');
-Route::get('auth/logout', [App\Http\Controllers\Admin\AuthController::class, 'logout'])->name('auth/logout'); // end auth
+Route::get('auth/logout', [App\Http\Controllers\Admin\AuthController::class, 'logout'])->name('auth/logout'); 
+Route::get('auth/cek-session', [App\Http\Controllers\Admin\AuthController::class, 'cek_session'])->name('auth/cek-session'); // end auth
 Route::middleware(['admin'])->group(function ()
 {
     Route::get('backend', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('backend');
