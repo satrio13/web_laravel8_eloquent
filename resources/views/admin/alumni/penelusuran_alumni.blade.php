@@ -228,6 +228,36 @@
             handle_confirm_delete();
         });
 
+        function cek_session(callback)
+        {
+            $.ajax({
+                url: base_url + "/auth/cek-session", 
+                type: "GET",
+                dataType: "JSON",
+                success: function(data)
+                {   
+                    if(!data.session_active)
+                    {
+                        swal({
+                            position: 'top-end',
+                            icon: 'error',
+                            title: 'Sesi anda telah habis, silahkan login kembali',
+                            timer: 5000
+                        }).then(() => {
+                            window.location.reload(); 
+                        });
+                    }else
+                    {
+                        callback();
+                    }
+                },
+                error: function()
+                {
+                   alert_gagal('Error checking session. Please check your internet connection!');
+                }
+            });
+        }
+
         function handle_datatable()
         {
             $("#datatable").DataTable();
@@ -242,82 +272,87 @@
     
         function detail(id)
         {
-            console.log(base_url);
-            $('#modal_form').modal('show'); 
-            $("#img, #nama, #th_lulus, #sma, #pt, #instansi, #alamatins, #hp, #email, #alamat, #kesan").html('');
+            cek_session(function()
+            { 
+                $('#modal_form').modal('show'); 
+                $("#img, #nama, #th_lulus, #sma, #pt, #instansi, #alamatins, #hp, #email, #alamat, #kesan").html('');
 
-            $.ajax({
-                url : base_url + "/backend/lihat-alumni/"+id,
-                type: "GET",
-                dataType: "JSON",
-                beforeSend: function()
-                {
-                    $("#load").html('<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>');
-                },
-                success: function(data)
-                {
-                    var sma = (data.sma !== null) ? data.sma : '';
-                    var pt = (data.pt !== null) ? data.pt : '';
-                    var instansi = (data.instansi !== null) ? data.instansi : '';
-                    var alamatins = (data.alamatins !== null) ? data.alamatins : '';
-                    var hp = (data.hp !== null) ? data.hp : '';
-                    var email = (data.email !== null) ? data.email : '';
-                    var alamat = (data.alamat !== null) ? data.alamat : '';
-                    var kesan = (data.kesan !== null) ? data.kesan : '';
-
-                    var fileUrl = base_url +'/img/alumni/'+ data.gambar;
-                    check_file_exists(fileUrl, function(exists)
+                $.ajax({
+                    url : base_url + "/backend/lihat-alumni/"+id,
+                    type: "GET",
+                    dataType: "JSON",
+                    beforeSend: function()
                     {
-                        if(data.gambar != '' && data.gambar !== null)
-                        {
-                            $("#img").html('<img src="'+ base_url +'/img/alumni/'+ data.gambar +'" class="img img-fluid img-thumbnail" width="120px">');
-                        }else
-                        {
-                            $("#img").html('');
-                        }
-                    });
+                        $("#load").html('<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>');
+                    },
+                    success: function(data)
+                    {
+                        var sma = (data.sma !== null) ? data.sma : '';
+                        var pt = (data.pt !== null) ? data.pt : '';
+                        var instansi = (data.instansi !== null) ? data.instansi : '';
+                        var alamatins = (data.alamatins !== null) ? data.alamatins : '';
+                        var hp = (data.hp !== null) ? data.hp : '';
+                        var email = (data.email !== null) ? data.email : '';
+                        var alamat = (data.alamat !== null) ? data.alamat : '';
+                        var kesan = (data.kesan !== null) ? data.kesan : '';
 
-                    $("#load").html('');
-                    $("#nama").html(': ' + data.nama);
-                    $("#th_lulus").html(': ' + data.th_lulus);
-                    $("#sma").html(': ' + sma);
-                    $("#pt").html(': ' + pt);
-                    $("#instansi").html(': ' + instansi);
-                    $("#alamatins").html(': ' + alamatins);
-                    $("#hp").html(': ' + hp);
-                    $("#email").html(': ' + email);
-                    $("#alamat").html(': ' + alamat);
-                    $("#kesan").html(': ' + kesan);
-                },
-                error: function (request)
-                {
-                    alert('An error occurred during your request: '+  request.status + ' ' + request.statusText + 'Please Try Again!!');
-                }
+                        var fileUrl = base_url +'/img/alumni/'+ data.gambar;
+                        check_file_exists(fileUrl, function(exists)
+                        {
+                            if(data.gambar != '' && data.gambar !== null)
+                            {
+                                $("#img").html('<img src="'+ base_url +'/img/alumni/'+ data.gambar +'" class="img img-fluid img-thumbnail" width="120px">');
+                            }else
+                            {
+                                $("#img").html('');
+                            }
+                        });
+
+                        $("#load").html('');
+                        $("#nama").html(': ' + data.nama);
+                        $("#th_lulus").html(': ' + data.th_lulus);
+                        $("#sma").html(': ' + sma);
+                        $("#pt").html(': ' + pt);
+                        $("#instansi").html(': ' + instansi);
+                        $("#alamatins").html(': ' + alamatins);
+                        $("#hp").html(': ' + hp);
+                        $("#email").html(': ' + email);
+                        $("#alamat").html(': ' + alamat);
+                        $("#kesan").html(': ' + kesan);
+                    },
+                    error: function (request)
+                    {
+                        alert('An error occurred during your request: '+  request.status + ' ' + request.statusText + 'Please Try Again!!');
+                    }
+                });
             });
         }
 
         function status(id)
         {
-            $('#modal_status').modal('show'); 
+            cek_session(function()
+            {
+                $('#modal_status').modal('show'); 
 
-            $.ajax({
-                url : base_url + "/backend/status/"+id,
-                type: "GET",
-                dataType: "JSON",
-                beforeSend: function()
-                {
-                    $("#load_status").html('<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>');
-                },
-                success: function(data)
-                {
-                    $("#load_status").html('');
-                    $('#id').val(data.id);
-                    $('#status').val(data.status);
-                },
-                error: function (request)
-                {
-                    alert('An error occurred during your request: '+  request.status + ' ' + request.statusText + 'Please Try Again!!');
-                }
+                $.ajax({
+                    url : base_url + "/backend/status/"+id,
+                    type: "GET",
+                    dataType: "JSON",
+                    beforeSend: function()
+                    {
+                        $("#load_status").html('<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>');
+                    },
+                    success: function(data)
+                    {
+                        $("#load_status").html('');
+                        $('#id').val(data.id);
+                        $('#status').val(data.status);
+                    },
+                    error: function (request)
+                    {
+                        alert('An error occurred during your request: '+  request.status + ' ' + request.statusText + 'Please Try Again!!');
+                    }
+                });
             });
         }
 
@@ -410,6 +445,18 @@
                 }
             };
             xhr.send();
+        }
+
+        function alert_gagal(str)
+        {
+            setTimeout(function () { 
+                swal({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: str,
+                    timer: 8000
+                });
+            },2000); 
         }
     </script>
 @endsection
