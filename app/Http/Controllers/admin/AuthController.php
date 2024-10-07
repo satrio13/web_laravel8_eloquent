@@ -60,4 +60,15 @@ class AuthController extends Controller
         return redirect()->route('auth/login');  
     }
 
+    function cek_session()
+    {
+        if(!session('id_user'))
+        {
+            return response()->json(['session_active' => false]);   
+        }else
+        {
+            return response()->json(['session_active' => true]);
+        }     
+    }
+
 }
