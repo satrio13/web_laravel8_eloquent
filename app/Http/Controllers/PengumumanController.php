@@ -36,6 +36,10 @@ class PengumumanController extends Controller
             $get = $cek;
             $data['titleweb'] = $get->nama.' - '.title();
             $data['title'] = $get->nama;
+
+            $upd = ['dibaca' => $cek->dibaca + 1];
+            $get->update($upd);
+
             $data['data'] = $get;
             $data['berita_populer'] = BeritaModel::select('id','nama','gambar','dibaca','is_active','hari','updated_at','slug')->where('is_active', 1)->where('slug', '!=', $slug)->orderBy('dibaca','desc')->limit(3,0)->get();
             $data['link_terkait'] = LinkModel::where('is_active', 1)->latest()->get();
