@@ -22,10 +22,7 @@ class DownloadController extends Controller
         if($cek)
         {
             $download = $cek;
-            $upd = [
-                'hits' => $cek->hits + 1
-            ];
-
+            $upd = ['hits' => $cek->hits + 1];
             $download->update($upd);
             $path = "file/$cek->file";
             if(!file_exists($path))
