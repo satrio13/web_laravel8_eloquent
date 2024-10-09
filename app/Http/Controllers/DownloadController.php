@@ -30,7 +30,17 @@ class DownloadController extends Controller
                 return abort(404, 'File not found');
             }else
             {
-                return response()->download($path);
+                // Membuat response download
+                $response = response()->download($path);
+                
+                // Mengatur header untuk mematikan caching
+                $response->headers->add([
+                    'Cache-Control' => 'no-store, no-cache, must-revalidate, max-age=0',
+                    'Pragma' => 'no-cache',
+                    'Expires' => 'Fri, 01 Jan 1990 00:00:00 GMT', // Tanggal kedaluwarsa
+                ]);
+
+                return $response;
             }
         }else
         {
