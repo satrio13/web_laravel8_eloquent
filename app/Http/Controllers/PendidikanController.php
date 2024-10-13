@@ -43,6 +43,7 @@ class PendidikanController extends Controller
         $data['title'] = "Rekap Ujian $jenis";
         $data['tahun'] = TahunModel::orderBy('tahun', 'desc')->get();
         $data['submit'] = $request->input('submit');
+        $data['id_tahun'] = $request->input('id_tahun');
         $data['data'] = RekapUSModel::select('tb_rekap_us.*', 'tb_kurikulum.mapel', 'tb_kurikulum.is_active', 'tb_tahun.tahun')->join('tb_kurikulum','tb_rekap_us.id_kurikulum', '=', 'tb_kurikulum.id_kurikulum')->join('tb_tahun','tb_rekap_us.id_tahun', '=', 'tb_tahun.id_tahun')->where('tb_rekap_us.id_tahun', $request->input('id_tahun'))->orderBy('tb_kurikulum.mapel','asc')->get();
         return view('pendidikan/rekap_us', $data);
     }
