@@ -27,11 +27,11 @@
                         <div class="input-group">
                             <select name="id_tahun" class="form-control">
                                 @foreach($tahun as $r)
-                                    <option value="{{ $r->id_tahun }}" {{ (old('id_tahun') == $r->id_tahun) ? 'selected' : '' }} >{{ $r->tahun }}</option>
+                                    <option value="{{ $r->id_tahun }}" {{ ($id_tahun == $r->id_tahun) ? 'selected' : '' }} >{{ $r->tahun }}</option>
                                 @endforeach
                             </select>
                             <div class="input-group-append">
-                                <button type="submit" class="btn bg-theme text-white"><i class="fa fa-search"></i> Cari Data</button>
+                                <button type="submit" name="submit" value="Submit" class="btn bg-theme text-white"><i class="fa fa-search"></i> Cari Data</button>
                             </div>
                         </div>
                     </div>
@@ -39,6 +39,11 @@
             </form>
             <br>
             @if(isset($submit))
+                @if(jenjang() == 1 OR jenjang() == 2)
+                    <h5 class="text-center">REKAP UJIAN SEKOLAH TAHUN PELAJARAN</h5>
+                @elseif(jenjang() == 3 OR jenjang() == 4)
+                    <h5 class="text-center">REKAP UJIAN MADRASAH TAHUN PELAJARAN {{ tahun($id_tahun) }}</h5>
+                @endif  
                 <div class="table table-responsive">
                     <table class="table table-bordered table-striped table-sm">
                         <thead class="bg-theme text-white text-center">
