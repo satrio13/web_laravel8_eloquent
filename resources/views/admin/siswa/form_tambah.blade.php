@@ -47,13 +47,13 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label"><?php if($profil->jenjang == 1 OR $profil->jenjang == 3){ echo'KELAS VII'; }else{ echo'KELAS X'; } ?> <span class="text-danger">*</span></label>
                                     <div class="col-sm-3">
-                                        <input type="text" name="jml1pa" min="0" value="{{ old('jml1pa') }}" class="form-control required" placeholder="JUMLAH SISWA PUTRA" onkeypress="return hanyaAngka(event)">
+                                        <input type="number" name="jml1pa" min="0" value="{{ old('jml1pa') }}" class="form-control required" placeholder="JUMLAH SISWA PUTRA">
                                         <small class="text-danger">
                                             {{ ($errors->first('jml1pa')) ? $errors->first('jml1pa') : '' }}
                                         </small>
                                     </div>
                                     <div class="col-sm-3">
-                                        <input type="number" name="jml1pi" min="0" value="{{ old('jml1pi') }}" class="form-control required" placeholder="JUMLAH SISWA PUTRI" onkeypress="return hanyaAngka(event)">
+                                        <input type="number" name="jml1pi" min="0" value="{{ old('jml1pi') }}" class="form-control required" placeholder="JUMLAH SISWA PUTRI">
                                         <small class="text-danger">
                                             {{ ($errors->first('jml1pi')) ? $errors->first('jml1pi') : '' }}
                                         </small>
@@ -62,13 +62,13 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label"><?php if($profil->jenjang == 1 OR $profil->jenjang == 3){ echo'KELAS VIII'; }else{ echo'KELAS XI'; } ?> <span class="text-danger">*</span></label>
                                     <div class="col-sm-3">
-                                        <input type="number" name="jml2pa" min="0" value="{{ old('jml2pa') }}" class="form-control required" placeholder="JUMLAH SISWA PUTRA" onkeypress="return hanyaAngka(event)">
+                                        <input type="number" name="jml2pa" min="0" value="{{ old('jml2pa') }}" class="form-control required" placeholder="JUMLAH SISWA PUTRA">
                                         <small class="text-danger">
                                             {{ ($errors->first('jml2pa')) ? $errors->first('jml2pa') : '' }}
                                         </small>
                                     </div>
                                     <div class="col-sm-3">
-                                        <input type="number" name="jml2pi" min="0" value="{{ old('jml2pi') }}" class="form-control required" placeholder="JUMLAH SISWA PUTRI" onkeypress="return hanyaAngka(event)">
+                                        <input type="number" name="jml2pi" min="0" value="{{ old('jml2pi') }}" class="form-control required" placeholder="JUMLAH SISWA PUTRI">
                                         <small class="text-danger">
                                             {{ ($errors->first('jml2pi')) ? $errors->first('jml2pi') : '' }}
                                         </small>
@@ -77,13 +77,13 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label"><?php if($profil->jenjang == 1 OR $profil->jenjang == 3){ echo'KELAS IX'; }else{ echo'KELAS XII'; } ?> <span class="text-danger">*</span></label>
                                     <div class="col-sm-3">
-                                        <input type="number" name="jml3pa" min="0" value="{{ old('jml3pa') }}" class="form-control required" placeholder="JUMLAH SISWA PUTRA" onkeypress="return hanyaAngka(event)">
+                                        <input type="number" name="jml3pa" min="0" value="{{ old('jml3pa') }}" class="form-control required" placeholder="JUMLAH SISWA PUTRA">
                                         <small class="text-danger">
                                             {{ ($errors->first('jml3pa')) ? $errors->first('jml3pa') : '' }}
                                         </small>
                                     </div>
                                     <div class="col-sm-3">
-                                        <input type="number" name="jml3pi" min="0" value="{{ old('jml3pi') }}" class="form-control required" placeholder="JUMLAH SISWA PUTRI" onkeypress="return hanyaAngka(event)">
+                                        <input type="number" name="jml3pi" min="0" value="{{ old('jml3pi') }}" class="form-control required" placeholder="JUMLAH SISWA PUTRI">
                                         <small class="text-danger">
                                             {{ ($errors->first('jml3pi')) ? $errors->first('jml3pi') : '' }}
                                         </small>
@@ -119,13 +119,6 @@
         function handle_validate()
         {
             $("#form").validate();
-        }
-
-        function hanyaAngka(evt)
-        {
-            var charCode = evt.which ? evt.which : event.keyCode;
-            if (charCode > 31 && (charCode < 48 || charCode > 57)) return false;
-            return true;
         }
     </script>
 @endsection
