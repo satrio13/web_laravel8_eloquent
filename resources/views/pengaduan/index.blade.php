@@ -23,7 +23,6 @@
                     @elseif(session('error'))
                         {!! pesan_gagal(session('error')) !!}
                     @endif
-                    
                     <form method="POST" action="{{ route('simpan-pengaduan') }}" id="form">
                     @csrf
                     <div class="row p-2">
