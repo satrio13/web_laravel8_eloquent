@@ -54,7 +54,7 @@
                                             <td>{{ $r->nama_file }}</td>
                                             <td><a href="/file/{{ $r->file }}" target="_blank">{{ $r->file }}</a></td>
                                             <td>{{ date('d-m-Y', strtotime($r->created_at)) }}</td>
-                                            <td>{{ $r->hits }}</td>
+                                            <td class="text-center">{{ $r->hits }}</td>
                                             <td>{{ $r->user->nama }}</td>
                                             <td class="text-center">
                                                 @if($r->is_active == 1)
