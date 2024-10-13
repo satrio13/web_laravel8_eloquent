@@ -87,6 +87,12 @@ function jenjang()
    return $q->jenjang;
 }
 
+function tahun($id_tahun)
+{
+   $q = DB::table('tb_tahun')->select('tahun')->where('id_tahun', $id_tahun)->first();
+   return $q->tahun;
+}
+
 function nama_user($id_user)
 {
    $q = DB::table('tb_user')->select('nama')->where('id_user', $id_user)->first();
