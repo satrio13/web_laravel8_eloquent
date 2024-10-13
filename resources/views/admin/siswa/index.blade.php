@@ -83,16 +83,16 @@
                                         <tr>
                                             <td class="text-center">{{ $no + 1 }}</td>
                                             <td>{{ $r->tahun->tahun }}</td>  
-                                            <td>{{ $r->jml1pa }}</td>  
-                                            <td>{{ $r->jml1pi }}</td>  
-                                            <td>{{ $r->jml1pa + $r->jml1pi }}</td>  
-                                            <td>{{ $r->jml2pa }}</td>  
-                                            <td>{{ $r->jml2pi }}</td>  
-                                            <td>{{ $r->jml2pa + $r->jml2pi }}</td>  
-                                            <td>{{ $r->jml3pa }}</td>  
-                                            <td>{{ $r->jml3pi }}</td>  
-                                            <td>{{ $r->jml3pa + $r->jml3pi }}</td>  
-                                            <td>{{ $r->jml1pa + $r->jml1pi + $r->jml2pa + $r->jml2pi + $r->jml3pa + $r->jml3pi }}</td>  
+                                            <td class="text-center">{{ $r->jml1pa }}</td>  
+                                            <td class="text-center">{{ $r->jml1pi }}</td>  
+                                            <td class="text-center">{{ $r->jml1pa + $r->jml1pi }}</td>  
+                                            <td class="text-center">{{ $r->jml2pa }}</td>  
+                                            <td class="text-center">{{ $r->jml2pi }}</td>  
+                                            <td class="text-center">{{ $r->jml2pa + $r->jml2pi }}</td>  
+                                            <td class="text-center">{{ $r->jml3pa }}</td>  
+                                            <td class="text-center">{{ $r->jml3pi }}</td>  
+                                            <td class="text-center">{{ $r->jml3pa + $r->jml3pi }}</td>  
+                                            <td class="text-center">{{ $r->jml1pa + $r->jml1pi + $r->jml2pa + $r->jml2pi + $r->jml3pa + $r->jml3pi }}</td>  
                                             <td class="text-center" nowrap>
                                                 <a href="{{ route('backend/edit-siswa', $r->id) }}" class="btn btn-info btn-xs" title="EDIT DATA">EDIT</a>
                                                 <a href="javascript:void(0)" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#konfirmasi_hapus" data-href="{{ route('backend/hapus-siswa', $r->id) }}" title="HAPUS DATA">HAPUS</a>
