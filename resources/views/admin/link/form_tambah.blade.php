@@ -63,7 +63,7 @@
                                         </div>
                                         <br><label for="is_active" class="error"></label>
                                         <small class="text-danger">
-                                            {{ ($errors->first('is_active')) ? $errors->first('link') : '' }} 
+                                            {{ ($errors->first('is_active')) ? $errors->first('is_active') : '' }} 
                                         </small>
                                     </div>
                                 </div>
