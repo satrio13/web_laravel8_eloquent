@@ -27,7 +27,7 @@ class DownloadController extends Controller
         $request->validate([
             'nama_file' => 'required|max:100',
             'is_active' => 'required',
-            'gambar' => 'max:7168'
+            'file' => 'required|max:7168'
         ]);
             
         $nama_file = '';
@@ -62,7 +62,7 @@ class DownloadController extends Controller
         $request->validate([
             'nama_file' => 'required|max:100',
             'is_active' => 'required',
-            'gambar' => 'max:7168'
+            'file' => 'max:7168'
         ]);
             
         $get = DownloadModel::select('id', 'file')->findOrFail($id); 
