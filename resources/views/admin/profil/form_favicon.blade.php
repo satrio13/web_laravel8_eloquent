@@ -38,7 +38,7 @@
                                         @if(empty($data->favicon))
                                             <img class='img-responsive' id='preview_gambar' width='50px'>
                                         @else
-                                            Favicon Sekarang: <img class='img-responsive mb-2' id='preview_gambar' width='50px' src="/img/logo/{{ $data->favicon }}">
+                                            <img class='img-responsive mb-2' id='preview_gambar' width='50px' src="/img/logo/{{ $data->favicon }}">
                                         @endif
                                         <input type='file' name='favicon' accept='.ico' class='form-control' onchange='readURL(this);' required>
                                         <p style="color: red"> *) format file .ico ukuran maksimal 100 Kb</p>
