@@ -27,6 +27,10 @@ class PengaduanController extends Controller
             'nama' => 'required|max:50',
             'status' => 'required',
             'isi' => 'required'
+        ],
+        [
+            'nama.required' => 'Kolom nama pengaduan harus diisi.',
+            'nama.max:50' => 'Kolom nama pengaduan harus kurang dari atau sama dengan :value karakter.'
         ]);
 
         $q = PengaduanModel::create($request->all());
