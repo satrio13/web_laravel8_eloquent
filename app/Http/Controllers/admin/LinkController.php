@@ -27,6 +27,10 @@ class LinkController extends Controller
             'nama' => 'required|max:100',
             'link' => 'required|url',
             'is_active' => 'required'
+        ],
+        [
+            'nama.required' => 'Kolom nama halaman harus diisi.',
+            'nama.max:100' => 'Kolom nama halaman harus kurang dari atau sama dengan :value karakter.'
         ]);
 
         $q = LinkModel::create($request->all());
@@ -53,6 +57,10 @@ class LinkController extends Controller
             'nama' => 'required|max:100',
             'link' => 'required|url',
             'is_active' => 'required'
+        ],
+        [
+            'nama.required' => 'Kolom nama halaman harus diisi.',
+            'nama.max:100' => 'Kolom nama halaman harus kurang dari atau sama dengan :value karakter.'
         ]);
 
         $link = LinkModel::findOrFail($id);
