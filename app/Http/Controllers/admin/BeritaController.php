@@ -30,6 +30,10 @@ class BeritaController extends Controller
             'isi' => 'required',
             'is_active' => 'required',
             'gambar' => 'image|mimes:jpeg,jpg,png|max:1024'
+        ],
+        [
+            'nama.required' => 'Kolom nama berita harus diisi.',
+            'nama.max:100' => 'Kolom nama berita harus kurang dari atau sama dengan :value karakter.'
         ]);
             
         $nama_gambar = '';
@@ -66,6 +70,10 @@ class BeritaController extends Controller
             'isi' => 'required',
             'is_active' => 'required',
             'gambar' => 'image|mimes:jpeg,jpg,png|max:1024'
+        ],
+        [
+            'nama.required' => 'Kolom nama berita harus diisi.',
+            'nama.max:100' => 'Kolom nama berita harus kurang dari atau sama dengan :value karakter.'
         ]);
             
         $get = BeritaModel::select('id', 'gambar')->findOrFail($id);
