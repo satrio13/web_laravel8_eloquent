@@ -84,8 +84,6 @@ Route::middleware(['admin'])->group(function ()
     Route::put('backend/update-favicon', [App\Http\Controllers\Admin\ProfilController::class, 'update_favicon'])->name('backend/update-favicon');
     Route::get('backend/logo-admin', [App\Http\Controllers\Admin\ProfilController::class, 'logo_admin'])->name('backend/logo-admin');
     Route::put('backend/update-logo-admin', [App\Http\Controllers\Admin\ProfilController::class, 'update_logo_admin'])->name('backend/update_logo-admin');
-    Route::get('backend/logo-admin', [App\Http\Controllers\Admin\ProfilController::class, 'logo_admin'])->name('backend/logo-admin');
-    Route::put('backend/update-logo-admin', [App\Http\Controllers\Admin\ProfilController::class, 'update_logo_admin'])->name('backend/update-logo-admin'); 
     Route::get('backend/gambar-profil', [App\Http\Controllers\Admin\ProfilController::class, 'gambar_profil'])->name('backend/gambar-profil'); 
     Route::put('backend/update-gambar-profil', [App\Http\Controllers\Admin\ProfilController::class, 'update_gambar_profil'])->name('backend/update-gambar-profil');
     Route::get('backend/file', [App\Http\Controllers\Admin\ProfilController::class, 'file'])->name('backend/file'); 
