@@ -35,6 +35,10 @@ class PrestasiGuruController extends Controller
             'tingkat' => 'required|numeric',
             'keterangan' => 'max:100',
             'gambar' => 'image|mimes:jpeg,jpg,png|max:1024'
+        ],
+        [
+            'nama.required' => 'Kolom nama lomba harus diisi.',
+            'nama.max:100' => 'Kolom nama lomba harus kurang dari atau sama dengan :value karakter.'
         ]);
             
         $nama_gambar = '';
@@ -76,6 +80,10 @@ class PrestasiGuruController extends Controller
             'tingkat' => 'required|numeric',
             'keterangan' => 'max:100',
             'gambar' => 'image|mimes:jpeg,jpg,png|max:1024'
+        ],
+        [
+            'nama.required' => 'Kolom nama lomba harus diisi.',
+            'nama.max:100' => 'Kolom nama lomba harus kurang dari atau sama dengan :value karakter.'
         ]);
             
         $get = PrestasiGuruModel::select('id', 'gambar')->findOrFail($id);
