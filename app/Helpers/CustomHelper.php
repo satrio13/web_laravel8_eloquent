@@ -7,7 +7,7 @@ function pesan_sukses($str)
                      position: 'top-end',
                      icon: 'success',
                      title: '$str',
-                     timer: 1500
+                     timer: 5000
                   });
                },2000); 
             </script>";
