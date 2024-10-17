@@ -115,7 +115,7 @@ return [
     'timezone' => 'Kolom :attribute harus merupakan zona yang valid.',
     'unique' => 'Kolom :attribute sudah ada yang menggunakan.',
     'uploaded' => 'Kolom :attribute gagal diunggah.',
-    'url' => 'Format :attribute tidak valid.',
+    'url' => 'Format :attribute tidak valid (masukan berupa URL).',
     'uuid' => 'Kolom :attribute harus berupa UUID yang valid.',  
 
     /*
