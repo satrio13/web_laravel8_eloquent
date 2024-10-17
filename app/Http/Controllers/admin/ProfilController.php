@@ -39,10 +39,10 @@ class ProfilController extends Controller
             'kurikulum' => 'required|max:30',
             'nama_kepsek' => 'required|max:100',
             'nama_operator' => 'required|max:100',
-            'instagram' => 'max:200',
-            'facebook' => 'max:200',
-            'twitter' => 'max:200',
-            'youtube' => 'max:200'
+            'instagram' => 'nullable|url|max:200',
+            'facebook' => 'nullable|url|max:200',
+            'twitter' => 'nullable|url|max:200',
+            'youtube' => 'nullable|url|max:200'
         ]);
         
         $profil = ProfilModel::where('id', 1)->first();
