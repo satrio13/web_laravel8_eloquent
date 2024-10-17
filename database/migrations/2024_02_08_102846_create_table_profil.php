@@ -34,10 +34,10 @@ class CreateTableProfil extends Migration
             $table->string('file', 250);
             $table->string('nama_kepsek', 100);
             $table->string('nama_operator', 100);
-            $table->string('instagram', 200);
-            $table->string('facebook', 200);
-            $table->string('twitter', 200);
-            $table->string('youtube', 200);
+            $table->string('instagram', 200)->nullable();
+            $table->string('facebook', 200)->nullable();
+            $table->string('twitter', 200)->nullable();
+            $table->string('youtube', 200)->nullable();
             $table->string('gambar', 250);
             $table->timestamps();
         });
