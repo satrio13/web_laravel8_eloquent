@@ -606,11 +606,11 @@ CREATE TABLE `tb_profil` (
   `file` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nama_kepsek` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nama_operator` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `instagram` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `facebook` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `twitter` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `youtube` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `gambar` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `instagram` varchar(200) COLLATE utf8mb4_unicode_ci,
+  `facebook` varchar(200) COLLATE utf8mb4_unicode_ci,
+  `twitter` varchar(200) COLLATE utf8mb4_unicode_ci,
+  `youtube` varchar(200) COLLATE utf8mb4_unicode_ci,
+  `gambar` varchar(250) COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
