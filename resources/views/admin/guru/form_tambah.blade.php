@@ -116,7 +116,7 @@
                                     <label class="col-sm-2 col-form-label">GOLONGAN RUANG</label>
                                     <div class="col-sm-5">
                                         <select name="golruang" class="form-control">
-                                            <option value="-"  >-</option>
+                                            <option value="-">-</option>
                                             <option value="I/a" {{ (old('golruang') == 'I/a') ? 'selected' : '' }} >I/a</option>
                                             <option value="I/b" {{ (old('golruang') == 'I/b') ? 'selected' : '' }} >I/b</option>
                                             <option value="I/c" {{ (old('golruang') == 'I/c') ? 'selected' : '' }} >I/c</option>
