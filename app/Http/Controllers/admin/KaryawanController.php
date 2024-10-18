@@ -31,7 +31,7 @@ class KaryawanController extends Controller
             'jk' => 'required',
             'statuspeg' => 'required|max:5',
             'status' => 'required|max:10',
-            'email' => 'max:100',
+            'email' => 'nullable|email|max:100',
             'gambar' => 'image|mimes:jpeg,jpg,png|max:1024'
         ]);
             
@@ -71,7 +71,7 @@ class KaryawanController extends Controller
             'jk' => 'required',
             'statuspeg' => 'required|max:5',
             'status' => 'required|max:10',
-            'email' => 'max:100',
+            'email' => 'nullable|email|max:100',
             'gambar' => 'image|mimes:jpeg,jpg,png|max:1024'
         ]);
             
