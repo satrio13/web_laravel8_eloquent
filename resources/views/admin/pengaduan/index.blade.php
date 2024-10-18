@@ -181,9 +181,6 @@
         {
             cek_session(function()
             { 
-                $('#modal_form').modal('show'); 
-                $('#nama, #status, #pengaduan').html('');           
-
                 $.ajax({
                     url : base_url + "/backend/lihat-pengaduan/"+id,
                     type: "GET",
@@ -212,7 +209,8 @@
                         $("#load").html('');
                         $('#nama').html(': ' + data.nama);               
                         $('#status').html(': ' + status);    
-                        $('#pengaduan').html(': ' + data.isi);    
+                        $('#pengaduan').html(': ' + data.isi);
+                        $('#modal_form').modal('show');     
                     },
                     error: function (request)
                     {
