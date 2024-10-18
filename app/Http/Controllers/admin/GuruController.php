@@ -32,7 +32,7 @@ class GuruController extends Controller
             'statuspeg' => 'required|max:5',
             'status' => 'required|max:10',
             'statusguru' => 'required|max:12',
-            'email' => 'max:100',
+            'email' => 'nullable|email|max:100',
             'gambar' => 'image|mimes:jpeg,jpg,png|max:1024'
         ]);
             
@@ -73,7 +73,7 @@ class GuruController extends Controller
             'statuspeg' => 'required|max:5',
             'status' => 'required|max:10',
             'statusguru' => 'required|max:12',
-            'email' => 'max:100',
+            'email' => 'nullable|email|max:100',
             'gambar' => 'image|mimes:jpeg,jpg,png|max:1024'
         ]);
             
