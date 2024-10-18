@@ -259,9 +259,6 @@
         {
             cek_session(function()
             {
-                $('#modal_form').modal('show'); 
-                $("#img, #nama, #nip, #duk, #niplama, #nuptk, #nokarpeg, #tmp_lahir, #tgl_lahir, #statuspeg, #golruang, #tmt_cpns, #tmt_pns, #jk,#agama, #alamat, #tingkat_pt, #prodi, #th_lulus, #status, #email").html('');
-
                 $.ajax({
                     url : base_url + "/backend/lihat-karyawan/"+id,
                     type: "GET",
@@ -380,6 +377,7 @@
                         $("#th_lulus").html(': ' + th_lulus);
                         $("#status").html(': ' + data.status);
                         $("#email").html(': ' + email);
+                        $('#modal_form').modal('show'); 
                     },
                     error: function (request)
                     {
