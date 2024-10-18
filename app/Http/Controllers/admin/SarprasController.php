@@ -10,7 +10,7 @@ class SarprasController extends Controller
 {
     function index()
     {     
-        $data['title'] = 'Sarana & Prasarara';
+        $data['title'] = 'Sarana & Prasarana';
         $data['data'] = SarprasModel::where('id', 1)->first();
         return view('admin.sarpras.index', $data);
     }
