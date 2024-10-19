@@ -289,7 +289,7 @@
                         var fileUrl = base_url +'/img/karyawan/'+ data.gambar;
                         check_file_exists(fileUrl, function(exists)
                         {
-                            if(data.gambar != '')
+                            if(data.gambar !== '')
                             {
                                 $("#img").html('<img src="'+ base_url +'/img/karyawan/'+ data.gambar +'" class="img img-fluid img-thumbnail" width="120px">');
                             }else
