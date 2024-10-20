@@ -51,9 +51,9 @@
                                         <tr>
                                             <td class="text-center">{{ $no + 1 }}</td>
                                             <td>{{ $r->mapel }}</td>
-                                            <td>{{ $r->kelompok }}</td>
-                                            <td>{{ $r->no_urut }}</td>
-                                            <td>{{ $r->alokasi }}</td>
+                                            <td class="text-center">{{ $r->kelompok }}</td>
+                                            <td class="text-center">{{ $r->no_urut }}</td>
+                                            <td class="text-center">{{ $r->alokasi }}</td>
                                             <td class="text-center">
                                                 @if($r->is_active == 1)
                                                     <span class="badge badge-primary">Aktif</span>
