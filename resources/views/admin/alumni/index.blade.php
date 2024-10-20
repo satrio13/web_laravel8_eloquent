@@ -50,9 +50,9 @@
                                         <tr>
                                             <td class="text-center">{{ $no + 1 }}</td>
                                             <td>{{ $r->tahun->tahun }}</td>
-                                            <td>{{ $r->jml_l }}</td>
-                                            <td>{{ $r->jml_p }}</td>
-                                            <td>{{ $r->jml_l + $r->jml_p }}</td>
+                                            <td class="text-center">{{ $r->jml_l }}</td>
+                                            <td class="text-center">{{ $r->jml_p }}</td>
+                                            <td class="text-center">{{ $r->jml_l + $r->jml_p }}</td>
                                             <td class="text-center" nowrap>
                                                 <a href="{{ route('backend/edit-alumni', $r->id) }}" class="btn btn-info btn-xs" title="EDIT DATA">EDIT</a>
                                                 <a href="javascript:void(0)" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#konfirmasi_hapus" data-href="{{ route('backend/hapus-alumni', $r->id) }}" title="HAPUS DATA">HAPUS</a>
