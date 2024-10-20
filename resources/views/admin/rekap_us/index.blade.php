@@ -52,9 +52,9 @@
                                             <td class="text-center">{{ $no + 1 }}</td>
                                             <td>{{ $r->tahun->tahun }}</td>
                                             <td>{{ $r->kurikulum->mapel }}</td>
-                                            <td>{{ $r->tertinggi }}</td>
-                                            <td>{{ $r->terendah }}</td>
-                                            <td>{{ $r->rata }}</td>
+                                            <td class="text-center">{{ $r->tertinggi }}</td>
+                                            <td class="text-center">{{ $r->terendah }}</td>
+                                            <td class="text-center">{{ $r->rata }}</td>
                                             <td class="text-center" nowrap>
                                                 <a href="{{ route('backend/edit-rekap-us', $r->id_us) }}" class="btn btn-info btn-xs" title="EDIT DATA">EDIT</a>
                                                 <a href="javascript:void(0)" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#konfirmasi_hapus" data-href="{{ route('backend/hapus-rekap-us', $r->id_us) }}" title="HAPUS DATA">HAPUS</a>
