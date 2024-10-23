@@ -96,7 +96,7 @@
                                         if($r->foto != '' AND file_exists("img/foto/$r->foto"))
                                         {
                                             $img = '<a href="/img/foto/'.$r->foto.'" target="_blank">
-                                                        <img src="/img/foto/'.$r->foto.'" class="img img-fluid" width="200px">
+                                                        <img src="/img/foto/'.$r->foto.'" class="img img-fluid" width="100px">
                                                     </a>';
                                         }else
                                         {
