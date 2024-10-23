@@ -58,7 +58,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">PASSWORD LAMA <span class="text-danger">*</span></label>
                                     <div class="col-sm-5">
-                                        <input type="password" name="password3" id="password3" value="{{ old('password3') }}" minlength="5" maxlength="30" placeholder="Password Lama" id="sepasi3" class="form-control required">
+                                        <input type="password" name="password3" id="password3" value="{{ old('password3') }}" minlength="5" maxlength="30" placeholder="Password Lama" class="form-control required">
                                         <small class="text-danger">
                                             {{ ($errors->first('password3')) ? $errors->first('password3') : '' }}
                                         </small>
@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="offset-sm-3 col-sm-9">
-                                        <label class="form-check-label" for="exampleCheck2"><span class="text-danger">*</span>) Field Wajib Diisi</label>
+                                        <span class="text-danger"><b>*</b></span>) Field Wajib Diisi
                                     </div>
                                 </div>
                             </div>
