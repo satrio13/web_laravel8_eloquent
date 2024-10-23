@@ -4,20 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\SiswaModel;
+use App\Models\TahunModel;
 use Illuminate\Http\Request;
 
 class SiswaController extends Controller
 {
-    function __construct()
-    {
-        $this->siswa_model = new SiswaModel();
-    }
-
     function index()
     {     
         $data['titleweb'] = 'Peserta Didik - '.title();
 		$data['title'] = 'Peserta Didik';
-        $data['data'] = $this->siswa_model->list_siswa();
+        $data['data'] = SiswaModel::select('tb_siswa.*','tb_tahun.tahun')->join('tb_tahun', 'tb_siswa.id_tahun', '=', 'tb_tahun.id_tahun')->orderBy('tb_tahun.tahun', 'desc')->get();
         return view('siswa.index', $data);
     }
 
