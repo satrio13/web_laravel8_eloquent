@@ -141,27 +141,28 @@
         <div class="table table-responsive">
             <table class="table table-bordered table-striped table-sm" id="datatable">
                 <thead class="bg-theme text-white text-center">
-                <tr>
-                    <th width="5%">No</th>
-                    <th>Nama</th>
-                    <th>Tahun Lulus</th>
-                    @if(jenjang() == 1 OR jenjang() == 3)                     
-                        <th>SMA / SMK / MA</th>
-                        <th>Perguruan Tinggi</th>
-                    @elseif(jenjang() == 2 OR jenjang() == 4)
-                        <th>Perguruan Tinggi</th>
-                    @endif                    
-                    <th>Instansi</th>
-                    <th>Alamat Instansi</th>
-                    <th>No Hp</th>
-                    <th>Email</th>
-                    <th>Alamat</th>
-                    <th>Kesan</th>
-                    <th>Gambar</th>
-                </tr>
+                    <tr>
+                        <th width="5%">No</th>
+                        <th nowrap>Nama</th>
+                        <th nowrap>Tahun Lulus</th>
+                        @if(jenjang() == 1 OR jenjang() == 3)                     
+                            <th nowrap>SMA / SMK / MA</th>
+                            <th nowrap>Perguruan Tinggi</th>
+                        @elseif(jenjang() == 2 OR jenjang() == 4)
+                            <th nowrap>Perguruan Tinggi</th>
+                        @endif                    
+                        <th nowrap>Instansi</th>
+                        <th nowrap>Alamat Instansi</th>
+                        <th nowrap>No Hp</th>
+                        <th nowrap>Email</th>
+                        <th nowrap>Alamat</th>
+                        <th nowrap>Kesan</th>
+                        <th nowrap>Gambar</th>
+                        <th nowrap>Tgl Mengisi</th>
+                    </tr>
                 </thead>
-                </tbody>
-                @foreach($data as $no => $r):
+                <tbody>
+                @foreach($data as $no => $r)
                     @php
                         if($r->gambar != '' AND file_exists("img/alumni/$r->gambar"))
                         {
@@ -188,6 +189,7 @@
                             <td>{{ cetak($r->alamat) }}</td>
                             <td>{{ cetak($r->kesan) }}</td>
                             <td class="text-center">{!! $img !!}</td>
+                            <td>{{ date('d-m-Y H:i:s', strtotime($r->created_at)) }}</td>
                         </tr>
                 @endforeach
                 </tbody>
