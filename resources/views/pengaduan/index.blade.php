@@ -38,9 +38,9 @@
                         <div class="col-md-3"><label for="status">STATUS</label> <span class="text-danger">*</span></div>
                         <div class="col-md-5">
                             <select name="status" id="status" class="form-control required digits">
-                                <option value="1"  >Peserta Didik</option>
-                                <option value="2"  >Wali Murid</option>
-                                <option value="3"  >Masyarakat</option>
+                                <option value="1" {{ (old('status') == '1') ? 'selected' : '' }} >Peserta Didik</option>
+                                <option value="2" {{ (old('status') == '2') ? 'selected' : '' }} >Wali Murid</option>
+                                <option value="3" {{ (old('status') == '3') ? 'selected' : '' }} >Masyarakat</option>
                             </select>
                             <small class="text-danger">
                                 {{ ($errors->first('status')) ? $errors->first('status') : '' }} 
