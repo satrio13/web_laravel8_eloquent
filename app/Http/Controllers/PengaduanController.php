@@ -8,12 +8,6 @@ use Illuminate\Http\Request;
 
 class PengaduanController extends Controller
 {
-    function __construct()
-    {
-        $this->pengaduan_model = new PengaduanModel();
-        date_default_timezone_set('Asia/Jakarta');
-    }
-
     function index()
     {     
         $data['titleweb'] = 'Layanan Pengaduan - '.title();
@@ -27,10 +21,6 @@ class PengaduanController extends Controller
             'nama' => 'required|max:50',
             'status' => 'required',
             'isi' => 'required'
-        ],
-        [
-            'nama.required' => 'Kolom nama pengaduan harus diisi.',
-            'nama.max:50' => 'Kolom nama pengaduan harus kurang dari atau sama dengan :value karakter.'
         ]);
 
         $q = PengaduanModel::create($request->all());
