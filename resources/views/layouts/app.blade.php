@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito&display=swap">
     <link rel="stylesheet" href="{{ asset('assets/owl-carousel/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/owl-carousel/css/owl.theme.default.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/select2/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/AdminLTE-3.0.2/plugins/datatables-bs4/css/dataTables.bootstrap4.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.css') }}">
@@ -250,7 +249,6 @@
 <script src="{{ asset('assets/js/jquery-3.4.1.min.js') }}"></script>
 <script src="{{ asset('assets/js/custom.js') }}"></script>
 <script src="{{ asset('assets/bootstrap-4.4.1/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('assets/select2/select2.min.js') }}"></script>
 <script src="{{ asset('assets/AdminLTE-3.0.2/plugins/datatables/jquery.dataTables.js') }}"></script>
 <script src="{{ asset('assets/AdminLTE-3.0.2/plugins/datatables-bs4/js/dataTables.bootstrap4.js') }}"></script>
 <script src="{{ asset('assets/owl-carousel/js/owl.carousel.min.js') }}"></script>
