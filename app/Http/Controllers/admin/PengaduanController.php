@@ -18,7 +18,7 @@ class PengaduanController extends Controller
     function lihat_pengaduan($id)
 	{ 
         $data = PengaduanModel::findOrFail($id);
-        echo json_encode($data);
+        return response()->json($data);  
     }
 
     function hapus_pengaduan($id)
