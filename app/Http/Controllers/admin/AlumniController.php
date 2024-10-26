@@ -94,13 +94,13 @@ class AlumniController extends Controller
     function lihat_alumni($id)
 	{ 
         $data = IsiAlumniModel::findOrFail($id);
-        echo json_encode($data);
+        return response()->json($data);  
     }
 
     function status($id)
 	{ 
-        $data = IsiAlumniModel::findOrFail($id);
-        echo json_encode($data);
+        $data = IsiAlumniModel::select('id','status')->findOrFail($id);
+        return response()->json($data);      
     }
 
     function save_status(Request $request)
@@ -108,7 +108,7 @@ class AlumniController extends Controller
         $id = $request->input('id');
         $alumni = IsiAlumniModel::findOrFail($id);
         $q = $alumni->update($request->all());
-        echo json_encode($q);	
+        return response()->json($q);  
     }
 
     function hapus_penelusuran_alumni($id)
