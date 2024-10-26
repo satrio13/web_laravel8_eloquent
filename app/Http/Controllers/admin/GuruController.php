@@ -119,7 +119,7 @@ class GuruController extends Controller
     function lihat_guru($id)
     {
         $data = GuruModel::findOrFail($id);   
-        echo json_encode($data);
+        return response()->json($data);  
     }
 
 }
