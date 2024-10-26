@@ -117,7 +117,7 @@ class KaryawanController extends Controller
     function lihat_karyawan($id)
     {
         $data = KaryawanModel::findOrFail($id);
-        echo json_encode($data);
+        return response()->json($data);  
     }
 
 }
