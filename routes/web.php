@@ -18,7 +18,7 @@ Route::get('auth/login', [App\Http\Controllers\Admin\AuthController::class, 'log
 Route::post('auth/proses-login', [App\Http\Controllers\Admin\AuthController::class, 'proses_login'])->name('auth/proses-login');
 Route::get('auth/logout', [App\Http\Controllers\Admin\AuthController::class, 'logout'])->name('auth/logout'); 
 Route::get('auth/cek-session', [App\Http\Controllers\Admin\AuthController::class, 'cek_session'])->name('auth/cek-session'); // end auth
-Route::middleware(['admin'])->group(function ()
+Route::middleware(['admin','sanitize.input'])->group(function ()
 {
     Route::get('backend', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('backend');
     Route::get('backend/link', [App\Http\Controllers\Admin\LinkController::class, 'index'])->name('backend/link'); // start link
@@ -194,40 +194,43 @@ Route::middleware(['admin'])->group(function ()
 });
 
 /* WEBSITE */
-Route::get('/', [App\Http\Controllers\MainController::class, 'index'])->name('/'); 
-Route::get('agenda', [App\Http\Controllers\AgendaController::class, 'index'])->name('agenda'); // start agenda
-Route::get('agenda/detail/{id}', [App\Http\Controllers\AgendaController::class, 'detail'])->name('agenda/detail'); // end agenda
-Route::get('berita', [App\Http\Controllers\BeritaController::class, 'index'])->name('berita'); // start berita
-Route::get('berita/detail/{id}', [App\Http\Controllers\BeritaController::class, 'detail'])->name('berita/detail'); // end berita
-Route::get('pengumuman', [App\Http\Controllers\PengumumanController::class, 'index'])->name('pengumuman'); // start pengumuman
-Route::get('pengumuman/detail/{id}', [App\Http\Controllers\PengumumanController::class, 'detail'])->name('pengumuman/detail'); // end pengumuman
-Route::get('profil', [App\Http\Controllers\ProfilController::class, 'index'])->name('profil'); // start profil
-Route::get('profil/sejarah', [App\Http\Controllers\ProfilController::class, 'sejarah'])->name('profil/sejarah');
-Route::get('profil/visi-misi', [App\Http\Controllers\ProfilController::class, 'visi_misi'])->name('profil/visi-misi');
-Route::get('profil/struktur-organisasi', [App\Http\Controllers\ProfilController::class, 'struktur_organisasi'])->name('profil/struktur-organisasi');
-Route::get('profil/sarpras', [App\Http\Controllers\ProfilController::class, 'sarpras'])->name('profil/sarpras'); // end profil
-Route::get('guru', [App\Http\Controllers\GuruController::class, 'index'])->name('guru'); // start guru
-Route::get('guru/detail/{id}', [App\Http\Controllers\GuruController::class, 'detail'])->name('guru/detail'); // end guru
-Route::get('karyawan', [App\Http\Controllers\KaryawanController::class, 'index'])->name('karyawan'); // start karyawan
-Route::get('karyawan/detail/{id}', [App\Http\Controllers\KaryawanController::class, 'detail'])->name('karyawan/detail'); // end karyawan
-Route::get('pendidikan/kurikulum', [App\Http\Controllers\PendidikanController::class, 'kurikulum'])->name('pendidikan/kurikulum'); // start pendidikan
-Route::get('pendidikan/kalender', [App\Http\Controllers\PendidikanController::class, 'kalender'])->name('pendidikan/kalender');
-Route::get('pendidikan/rekap-us', [App\Http\Controllers\PendidikanController::class, 'rekap_us'])->name('pendidikan/rekap-us');
-Route::post('pendidikan/rekap-us', [App\Http\Controllers\PendidikanController::class, 'rekap_us'])->name('pendidikan/rekap-us'); // end pendidikan
-Route::get('ekstrakurikuler', [App\Http\Controllers\ProfilController::class, 'ekstrakurikuler'])->name('ekstrakurikuler'); // start ekstrakurikuler
-Route::get('ekstrakurikuler/detail/{id}', [App\Http\Controllers\ProfilController::class, 'detail_ekstrakurikuler'])->name('ekstrakurikuler/detail'); // end ekstrakurikuler
-Route::get('peserta-didik', [App\Http\Controllers\SiswaController::class, 'index'])->name('peserta-didik'); // siswa
-Route::get('prestasi/prestasi-sekolah', [App\Http\Controllers\PrestasiController::class, 'prestasi_sekolah'])->name('prestasi/prestasi-sekolah'); // start prestasi
-Route::get('prestasi/prestasi-madrasah', [App\Http\Controllers\PrestasiController::class, 'prestasi_madrasah'])->name('prestasi/prestasi-madrasah');
-Route::get('prestasi/prestasi-siswa', [App\Http\Controllers\PrestasiController::class, 'prestasi_siswa'])->name('prestasi/prestasi-siswa');
-Route::get('prestasi/prestasi-guru', [App\Http\Controllers\PrestasiController::class, 'prestasi_guru'])->name('prestasi/prestasi-guru'); // end prestasi
-Route::get('alumni', [App\Http\Controllers\AlumniController::class, 'index'])->name('alumni');  // start alumni
-Route::get('alumni/penelusuran-alumni', [App\Http\Controllers\AlumniController::class, 'penelusuran_alumni'])->name('alumni/penelusuran-alumni');
-Route::post('alumni/simpan-penelusuran-alumni', [App\Http\Controllers\AlumniController::class, 'simpan_penelusuran_alumni'])->name('alumni/simpan-penelusuran-alumni'); // end alumni
-Route::get('galeri/album/{id}', [App\Http\Controllers\GaleriController::class, 'album'])->name('galeri/album'); // start album
-Route::get('galeri/foto', [App\Http\Controllers\GaleriController::class, 'foto'])->name('galeri/foto');
-Route::get('galeri/video', [App\Http\Controllers\GaleriController::class, 'video'])->name('galeri/video'); // end album
-Route::get('download', [App\Http\Controllers\DownloadController::class, 'index'])->name('download'); // start download
-Route::get('download/hits/{id}', [App\Http\Controllers\DownloadController::class, 'hits'])->name('download/hits'); // end download
-Route::get('pengaduan', [App\Http\Controllers\PengaduanController::class, 'index'])->name('pengaduan'); // start pengaduan
-Route::post('simpan-pengaduan', [App\Http\Controllers\PengaduanController::class, 'simpan_pengaduan'])->name('simpan-pengaduan'); // end pengaduan
+Route::middleware(['sanitize.input'])->group(function ()
+{
+    Route::get('/', [App\Http\Controllers\MainController::class, 'index'])->name('/'); 
+    Route::get('agenda', [App\Http\Controllers\AgendaController::class, 'index'])->name('agenda'); // start agenda
+    Route::get('agenda/detail/{id}', [App\Http\Controllers\AgendaController::class, 'detail'])->name('agenda/detail'); // end agenda
+    Route::get('berita', [App\Http\Controllers\BeritaController::class, 'index'])->name('berita'); // start berita
+    Route::get('berita/detail/{id}', [App\Http\Controllers\BeritaController::class, 'detail'])->name('berita/detail'); // end berita
+    Route::get('pengumuman', [App\Http\Controllers\PengumumanController::class, 'index'])->name('pengumuman'); // start pengumuman
+    Route::get('pengumuman/detail/{id}', [App\Http\Controllers\PengumumanController::class, 'detail'])->name('pengumuman/detail'); // end pengumuman
+    Route::get('profil', [App\Http\Controllers\ProfilController::class, 'index'])->name('profil'); // start profil
+    Route::get('profil/sejarah', [App\Http\Controllers\ProfilController::class, 'sejarah'])->name('profil/sejarah');
+    Route::get('profil/visi-misi', [App\Http\Controllers\ProfilController::class, 'visi_misi'])->name('profil/visi-misi');
+    Route::get('profil/struktur-organisasi', [App\Http\Controllers\ProfilController::class, 'struktur_organisasi'])->name('profil/struktur-organisasi');
+    Route::get('profil/sarpras', [App\Http\Controllers\ProfilController::class, 'sarpras'])->name('profil/sarpras'); // end profil
+    Route::get('guru', [App\Http\Controllers\GuruController::class, 'index'])->name('guru'); // start guru
+    Route::get('guru/detail/{id}', [App\Http\Controllers\GuruController::class, 'detail'])->name('guru/detail'); // end guru
+    Route::get('karyawan', [App\Http\Controllers\KaryawanController::class, 'index'])->name('karyawan'); // start karyawan
+    Route::get('karyawan/detail/{id}', [App\Http\Controllers\KaryawanController::class, 'detail'])->name('karyawan/detail'); // end karyawan
+    Route::get('pendidikan/kurikulum', [App\Http\Controllers\PendidikanController::class, 'kurikulum'])->name('pendidikan/kurikulum'); // start pendidikan
+    Route::get('pendidikan/kalender', [App\Http\Controllers\PendidikanController::class, 'kalender'])->name('pendidikan/kalender');
+    Route::get('pendidikan/rekap-us', [App\Http\Controllers\PendidikanController::class, 'rekap_us'])->name('pendidikan/rekap-us');
+    Route::post('pendidikan/rekap-us', [App\Http\Controllers\PendidikanController::class, 'rekap_us'])->name('pendidikan/rekap-us'); // end pendidikan
+    Route::get('ekstrakurikuler', [App\Http\Controllers\ProfilController::class, 'ekstrakurikuler'])->name('ekstrakurikuler'); // start ekstrakurikuler
+    Route::get('ekstrakurikuler/detail/{id}', [App\Http\Controllers\ProfilController::class, 'detail_ekstrakurikuler'])->name('ekstrakurikuler/detail'); // end ekstrakurikuler
+    Route::get('peserta-didik', [App\Http\Controllers\SiswaController::class, 'index'])->name('peserta-didik'); // siswa
+    Route::get('prestasi/prestasi-sekolah', [App\Http\Controllers\PrestasiController::class, 'prestasi_sekolah'])->name('prestasi/prestasi-sekolah'); // start prestasi
+    Route::get('prestasi/prestasi-madrasah', [App\Http\Controllers\PrestasiController::class, 'prestasi_madrasah'])->name('prestasi/prestasi-madrasah');
+    Route::get('prestasi/prestasi-siswa', [App\Http\Controllers\PrestasiController::class, 'prestasi_siswa'])->name('prestasi/prestasi-siswa');
+    Route::get('prestasi/prestasi-guru', [App\Http\Controllers\PrestasiController::class, 'prestasi_guru'])->name('prestasi/prestasi-guru'); // end prestasi
+    Route::get('alumni', [App\Http\Controllers\AlumniController::class, 'index'])->name('alumni');  // start alumni
+    Route::get('alumni/penelusuran-alumni', [App\Http\Controllers\AlumniController::class, 'penelusuran_alumni'])->name('alumni/penelusuran-alumni');
+    Route::post('alumni/simpan-penelusuran-alumni', [App\Http\Controllers\AlumniController::class, 'simpan_penelusuran_alumni'])->name('alumni/simpan-penelusuran-alumni'); // end alumni
+    Route::get('galeri/album/{id}', [App\Http\Controllers\GaleriController::class, 'album'])->name('galeri/album'); // start album
+    Route::get('galeri/foto', [App\Http\Controllers\GaleriController::class, 'foto'])->name('galeri/foto');
+    Route::get('galeri/video', [App\Http\Controllers\GaleriController::class, 'video'])->name('galeri/video'); // end album
+    Route::get('download', [App\Http\Controllers\DownloadController::class, 'index'])->name('download'); // start download
+    Route::get('download/hits/{id}', [App\Http\Controllers\DownloadController::class, 'hits'])->name('download/hits'); // end download
+    Route::get('pengaduan', [App\Http\Controllers\PengaduanController::class, 'index'])->name('pengaduan'); // start pengaduan
+    Route::post('simpan-pengaduan', [App\Http\Controllers\PengaduanController::class, 'simpan_pengaduan'])->name('simpan-pengaduan'); // end pengaduan
+});
