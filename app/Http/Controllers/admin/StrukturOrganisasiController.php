@@ -34,7 +34,7 @@ class StrukturOrganisasiController extends Controller
         $gambar = $request->file('struktur');
         if($gambar != '')
         {
-            $nama_gambar = time().'_'.$gambar->hashName();
+            $nama_gambar = time().'_'.$gambar->getClientOriginalName();
             $gambar->move(public_path('img/struktur'), $nama_gambar);
             File::delete("img/struktur/$get->isi");
         }else
