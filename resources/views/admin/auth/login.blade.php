@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>{{ title() }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="/img/logo/{{ favicon() }}" type="image/x-icon">
+  <link rel="icon" href="{{ asset('img/logo/'.favicon()) }}" type="image/x-icon">
   <link rel="stylesheet" href="{{ asset('assets/AdminLTE-3.0.2/plugins/fontawesome-free/css/all.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/AdminLTE-3.0.2/dist/css/adminlte.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
