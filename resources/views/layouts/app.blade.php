@@ -10,7 +10,7 @@
     <meta name="keywords" content="{{ meta_keyword() }}">
     <meta name="author" content="{{ title() }}">
     <meta name="language" content="Indonesia">
-    <link rel="icon" href="/img/logo/{{ favicon() }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('img/logo/'.favicon()) }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('assets/bootstrap-4.4.1/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/font-awesome-4.3.0/css/font-awesome.min.css') }}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -140,7 +140,7 @@
         </div>            
     </nav>
 </section>
-<div class="bg-theme p-1"></div>
+<div class="bg-theme p-3"></div>
 @yield('content')
 <section>
     <div class="bg-theme p-1"></div>
