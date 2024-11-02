@@ -86,7 +86,7 @@
                                 </a>
                                 <small>
                                     <a href="{{ route('berita/detail', $r->slug) }}" class="text-dark">{{ $r->nama }}</a>
-                                    <br><i class="fa fa-calendar"></i> <b>{{ date('d M Y', strtotime($r->updated_at)) }}</b>
+                                    <br><i class="fa fa-calendar"></i> <b>{{ date('d M Y', strtotime($r->created_at)) }}</b>
                                 </small>
                             </li>
                         @endforeach
