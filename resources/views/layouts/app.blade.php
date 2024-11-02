@@ -140,7 +140,7 @@
         </div>            
     </nav>
 </section>
-<div class="bg-theme p-3"></div>
+<div class="bg-theme p-1"></div>
 @yield('content')
 <section>
     <div class="bg-theme p-1"></div>
