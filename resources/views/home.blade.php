@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
-<div class="owl-carousel owl-theme" style="margin-top: -23px;">    
-    @foreach($banner as $r):
+<div class="owl-carousel owl-theme">    
+    @foreach($banner as $r)
         <div style="max-height:600px">
             <img class="img-fluid w-100 d-block" src="/img/banner/{{ $r->gambar }}">
             <div class="carousel-caption">
