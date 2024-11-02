@@ -45,7 +45,7 @@ class BeritaController extends Controller
         }
 
         $data = array_merge($request->all(), ['gambar' => $nama_gambar, 'dibaca' => 0, 'id_user' => session('id_user'), 'hari' => hari_ini_indo(), 'tgl' => tgl_jam_simpan_sekarang(), 'slug' => Str::slug($request->input('nama'), '-')]);
-        $q = BeritaModel::create($data);
+        $q = BeritaModel::create($data); 
         if($q)
         {
             return redirect()->route('backend/berita')->with(['success' => 'Data Berhasil Disimpan!']);
@@ -90,7 +90,7 @@ class BeritaController extends Controller
         }
         
         $berita = BeritaModel::findOrFail($id);
-        $data = array_merge($request->all(), ['gambar' => $nama_gambar, 'id_user' => session('id_user'), 'hari' => hari_ini_indo(), 'tgl' => tgl_jam_simpan_sekarang(), 'slug' => Str::slug($request->input('nama'), '-')]);
+        $data = array_merge($request->all(), ['gambar' => $nama_gambar, 'id_user' => session('id_user'), 'slug' => Str::slug($request->input('nama'), '-')]);
         $q = $berita->update($data);
         if($q)
         {
