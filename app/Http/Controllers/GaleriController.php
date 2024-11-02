@@ -26,7 +26,7 @@ class GaleriController extends Controller
             $get = $cek;
             $data['titleweb'] = $get->album.' - '.title();
             $data['title'] = $get->album;
-            $data['data'] = FotoModel::select('tb_foto.*', 'tb_album.*')->join('tb_album','tb_foto.id_album', '=', 'tb_album.id_album')->where('tb_album.is_active',1)->where('tb_album.slug', $slug)->orderBy('tb_foto.updated_at','desc')->get();
+            $data['data'] = FotoModel::select('tb_foto.*', 'tb_album.*')->join('tb_album','tb_foto.id_album', '=', 'tb_album.id_album')->where('tb_album.is_active',1)->where('tb_album.slug', $slug)->orderBy('tb_foto.created_at','desc')->get();
             return view('galeri/album', $data);
         }else
         {
