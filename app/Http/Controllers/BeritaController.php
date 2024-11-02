@@ -40,7 +40,7 @@ class BeritaController extends Controller
             $get->update($upd);
 
             $data['data'] = $get;
-            $data['berita_populer'] = BeritaModel::select('id','nama','gambar','dibaca','is_active','hari','updated_at','slug')->where('is_active', 1)->where('slug', '!=', $slug)->orderBy('dibaca','desc')->limit(3,0)->get();
+            $data['berita_populer'] = BeritaModel::select('id','nama','gambar','dibaca','is_active','hari','created_at','slug')->where('is_active', 1)->where('slug', '!=', $slug)->orderBy('dibaca','desc')->limit(3,0)->get();
             $data['link_terkait'] = LinkModel::where('is_active', 1)->latest()->get();
             return view('berita.detail', $data);
         }else
