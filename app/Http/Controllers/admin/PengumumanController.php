@@ -90,7 +90,7 @@ class PengumumanController extends Controller
         }
         
         $pengumuman = PengumumanModel::findOrFail($id); 
-        $data = array_merge($request->all(), ['gambar' => $nama_gambar, 'id_user' => session('id_user'), 'hari' => hari_ini_indo(), 'tgl' => tgl_jam_simpan_sekarang(), 'slug' => Str::slug($request->input('nama'), '-')]);
+        $data = array_merge($request->all(), ['gambar' => $nama_gambar, 'id_user' => session('id_user'), 'slug' => Str::slug($request->input('nama'), '-')]);
         $q = $pengumuman->update($data);
         if($q)
         {
