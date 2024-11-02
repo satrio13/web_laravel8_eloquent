@@ -183,8 +183,8 @@
                                     <h5>
                                         <a href="{{ route('pengumuman/detail', $r->slug) }}" class="text-decoration-none judul_link"><b>{{ $r->nama }}</b></a>
                                     </h5>
-                                    <span class="badge badge-primary"><i class="fa fa-calendar"></i> {{ tgl_indo($r->updated_at) }}</span>
-                                    <span class="badge badge-danger"><i class="fa fa-clock-o"></i> {{ date('H:i', strtotime($r->updated_at)) }}</span> 
+                                    <span class="badge badge-primary"><i class="fa fa-calendar"></i> {{ tgl_indo($r->created_at) }}</span>
+                                    <span class="badge badge-danger"><i class="fa fa-clock-o"></i> {{ date('H:i', strtotime($r->created_at)) }}</span> 
                                     <hr>
                                     <p>{!! htmlspecialchars_decode($isi) !!}</p>
                                     <div class="text-right">
@@ -255,8 +255,8 @@
                                     <h5>
                                         <a href="{{ route('berita/detail', $r->slug) }}" class="text-decoration-none judul_link"><b>{{ $r->nama }}</b></a>
                                     </h5>
-                                    <span class="badge badge-primary"><i class="fa fa-calendar"></i> {{ tgl_indo($r->updated_at) }}</span>
-                                    <span class="badge badge-danger"><i class="fa fa-clock-o"></i> {{ date('H:i', strtotime($r->updated_at)) }}</span> 
+                                    <span class="badge badge-primary"><i class="fa fa-calendar"></i> {{ tgl_indo($r->created_at) }}</span>
+                                    <span class="badge badge-danger"><i class="fa fa-clock-o"></i> {{ date('H:i', strtotime($r->created_at)) }}</span> 
                                     <hr>
                                     <p>{!! htmlspecialchars_decode($isi) !!}</p>
                                     <div class="text-right">
@@ -298,7 +298,7 @@
                                 @foreach($download as $r)
                                     <li class="list-group-item text-break">
                                         <b><a href="{{ route('download/hits', $r->file) }}" class="text-dark">{{ $r->nama_file }}</a></b>
-                                        <br><small class="text-muted"><b><i class="fa fa-calendar"></i> {{ tgl_indo($r->updated_at) }} | <i class="fa fa-download"></i> {{ $r->hits }} x</b></small>
+                                        <br><small class="text-muted"><b><i class="fa fa-calendar"></i> {{ tgl_indo($r->created_at) }} | <i class="fa fa-download"></i> {{ $r->hits }} x</b></small>
                                     </li>
                                 @endforeach
                             @else
@@ -341,7 +341,7 @@
                     <div class="col-md-12 p-2">
                         <ul class="list-group">
                             @if($ekstrakurikuler->count() > 0)
-                                @foreach($ekstrakurikuler as $r):
+                                @foreach($ekstrakurikuler as $r)
                                     <li class="list-group-item text-break">
                                         <a href="{{ route('ekstrakurikuler/detail', $r->slug) }}" target="_blank" class="text-dark"><b>{{ $r->nama_ekstrakurikuler }}</b></a>
                                     </li>
@@ -387,7 +387,7 @@
                                         <a href="{{ route('galeri/album', $r->slug) }}" class="card-text judul_link text-decoration-none"><b>{{ $r->album }}</b></a>
                                     </div>
                                     <div class="card-footer">
-                                        <small><i class="fa fa-calendar"></i> {{ tgl_indo($r->updated_at) }} | <i class="fa fa-folder-open"></i>{{ jml_foto($r->id_album) }} Foto</small>
+                                        <small><i class="fa fa-calendar"></i> {{ tgl_indo($r->created_at) }} | <i class="fa fa-folder-open"></i>{{ jml_foto($r->id_album) }} Foto</small>
                                     </div>
                                 </div>
                             </div>
@@ -414,7 +414,7 @@
                                         <a href="https://www.youtube.com/embed/{{ $r->link }}" target="_blank" class="card-text judul_link text-decoration-none"><b>{{ $r->judul }}</b></a>
                                     </div>
                                     <div class="card-footer">
-                                        <small><i class="fa fa-calendar"></i> {{ tgl_indo($r->updated_at) }} <i class="fa fa-clock-o"></i> {{ date('H:i', strtotime($r->updated_at)) }} WIB</small>
+                                        <small><i class="fa fa-calendar"></i> {{ tgl_indo($r->created_at) }} <i class="fa fa-clock-o"></i> {{ date('H:i', strtotime($r->created_at)) }} WIB</small>
                                     </div>
                                 </div>
                             </div>
